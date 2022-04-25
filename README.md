@@ -8,6 +8,8 @@ Currently, this supports virtual network creation with the ability to dynamicall
 This is a basic module which will expand over time, primarily developed for some lab use cases. Terratest will be integrated (hopefully) soon.
 
 # Usage
+
+## Example
 ```hcl
 module "hub-vnet" {
   source = "https://git@github.com/tw1984/tf-azure_virtual_network.git?ref=vX.X""
@@ -19,5 +21,9 @@ module "hub-vnet" {
   //options
   use_custom_dns_servers = false
   dns_servers            = var.dns_servers
+  create_subnets         = true
+  subnets                = var.hubSubnets
 }
 ```
+## Usage Notes
+- You can pass var.vnetName to specify a custom vnet name, otherwise, the module will determine a name based on other variables.

@@ -39,3 +39,12 @@ variable "vnetName" {
   description = "The name of the vNet if you want to specify the resource name. If you pass no vNet name value, the default of 'vnet-<hub/spoke>-<location>-cidr' will be used."
   default = ""
 }
+
+
+variable "create_subnets" {
+  description = "Specify whether you intend to create subnets inside virtual network."
+}
+
+variable "subnets" {
+  description = "The list of subnets that will be created inside the virtual network resource."
+}
