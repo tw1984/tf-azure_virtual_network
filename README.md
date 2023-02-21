@@ -12,7 +12,7 @@ This is a basic module which will expand over time, primarily developed for some
 ## Example
 ```hcl
 module "hub-vnet" {
-  source = "https://git@github.com/tw1984/tf-azure_virtual_network.git?ref=vX.X""
+  source = "git::https://github.com/tw1984/tf-azure_virtual_network.git" #No version yet
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   vnet_type           = "hub" //hub or spoke
