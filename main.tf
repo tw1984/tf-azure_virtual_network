@@ -3,7 +3,7 @@ resource "azurerm_virtual_network" "vnet" {
   name                = local.virtualNetworkName
   resource_group_name = var.resource_group_name
   location            = var.location
-  address_space       = var.address_space
+  address_space       = var.address_space //change to support multiple address spaces to align to Azure supported configurations
 
   lifecycle {
     ignore_changes = [tags]
@@ -25,7 +25,6 @@ resource "azurerm_subnet" "subnets" {
 
   name                                          = each.value["name"] != "" ? each.value["name"] : "snet-${var.vnet_type}-${var.location}-${replace(each.value["address_prefixes"][0], "/", "_")}"
   address_prefixes                              = each.value["address_prefixes"]
-  enforce_private_link_service_network_policies = each.value["private_endpoint_support"]
   resource_group_name                           = var.resource_group_name
   virtual_network_name                          = azurerm_virtual_network.vnet.name
 }
